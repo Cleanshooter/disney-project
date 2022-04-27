@@ -12,7 +12,7 @@ import {
 
 import { TodoService } from './todo.service';
 import { TodoDTO } from './todo.dto';
-import { AuthGuard } from 'src/shared/auth.guard';
+import { AuthGuard } from '../shared/auth.guard';
 
 @Controller('todo')
 @UseGuards(new AuthGuard())

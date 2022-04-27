@@ -45,7 +45,7 @@ const Navbar = () => {
     >
       <Grid item className={classes.navLinks}>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={3}>
             <Link to="/">
               <Button
                 style={{
@@ -59,7 +59,7 @@ const Navbar = () => {
               </Button>
             </Link>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={3}>
             <Link to="/demo">
               <Button
                 style={{
@@ -71,6 +71,36 @@ const Navbar = () => {
                 }}
               >
                 Demo
+              </Button>
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+            <Link to="/users">
+              <Button
+                style={{
+                  background: 'black',
+                  color: 'white',
+                  textDecoration: 'none',
+                  height: '48px',
+                  width: '80px'
+                }}
+              >
+                Users
+              </Button>
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+            <Link to="/groups">
+              <Button
+                style={{
+                  background: 'black',
+                  color: 'white',
+                  textDecoration: 'none',
+                  height: '48px',
+                  width: '80px'
+                }}
+              >
+                Groups
               </Button>
             </Link>
           </Grid>

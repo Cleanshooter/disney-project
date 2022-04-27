@@ -5,11 +5,14 @@ import {
   CreateDateColumn,
   BeforeInsert,
   OneToMany,
+  ManyToMany,
+  JoinTable
 } from 'typeorm';
 
+import { GroupEntity } from '../group/group.entity';
 import { hash, compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-import { TodoEntity } from 'src/todo/todo.entity';
+import { TodoEntity } from '../todo/todo.entity';
 import { UserSO } from './user.dto';
 
 @Entity('user')
@@ -40,13 +43,17 @@ export class UserEntity {
   )
   todos: TodoEntity[];
 
+  @ManyToMany(() => GroupEntity)
+  @JoinTable()
+  groups: GroupEntity[];
+
   comparePassword = async (attempt: string) => {
     return await compare(attempt, this.password);
   };
 
   sanitizeObject = (options?: SanitizeUserOptions): UserSO => {
-    const { id, createdOn, email, token } = this;
-    const responseObj = { id, createdOn, email };
+    const { id, createdOn, email, groups, token } = this;
+    const responseObj = { id, createdOn, email, groups };
     if (options?.withToken) {
       Object.assign(responseObj, { token });
     }

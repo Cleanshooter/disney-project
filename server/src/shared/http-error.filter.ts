@@ -13,7 +13,7 @@ export class HttpErrorFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
-    const status = exception.getStatus();
+    const status = typeof exception.getStatus === 'function' ? exception.getStatus() : 500
 
     const errorResponse = {
       statusCode: status,
